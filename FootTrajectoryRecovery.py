@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 class FootTrajectoryRecovery:
     def __init__(self, stepTime, maximumStepHeight):
         self.tStep_ = stepTime
-        self.dt_ = 1/240
+        self.dt_ = 1./240.
         self.leftFirst_ = True
         self.height_ = maximumStepHeight
         pass
@@ -13,7 +13,7 @@ class FootTrajectoryRecovery:
 
    
     def getSwingFootTrajectory(self,footPoseStart,footPoseEnd,time):
-        coefs = self.polynomial(footPoseStart[0],footPoseEnd[0], self.height_,self.tStep_-self.tDS_*.0)
+        coefs = self.polynomial(footPoseStart[0],footPoseEnd[0], self.height_,self.tStep_)
         footPosition = coefs[0] + coefs[1] * time + coefs[2] * time**2 + coefs[3] * time**3 + coefs[4] * time**4 + coefs[5] * time**5                                
         return footPosition
 
